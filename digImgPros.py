@@ -5,8 +5,8 @@
 
 # Extraction of RGB from an image
 
-# Import Library: Import library OpenCV dan NumPy. 
-# OpenCV (cv2) adalah library yang umum digunakan untuk pengolahan citra digital, 
+# Import Library: Import library OpenCV dan NumPy.
+# OpenCV (cv2) adalah library yang umum digunakan untuk pengolahan citra digital,
 #   sementara NumPy (np) digunakan untuk operasi numerik.
 import cv2 as cv
 import numpy as np
@@ -18,8 +18,8 @@ import numpy as np
 image = cv.imread("cat.jpg")
 cv.imshow("This is a image", image)
 
-# Mengambil Kanal Warna: Memisahkan gambar menjadi tiga kanal warna: 
-#   merah (R), hijau (G), dan biru (B) menggunakan fungsi cv.split(). 
+# Mengambil Kanal Warna: Memisahkan gambar menjadi tiga kanal warna:
+#   merah (R), hijau (G), dan biru (B) menggunakan fungsi cv.split().
 # Setiap kanal warna akan disimpan dalam variabel terpisah, yaitu r, g, dan b.
 r,g,b = cv.split(image)
 
@@ -30,7 +30,7 @@ blank = np.zeros(image.shape[:2],dtype="uint8")
 # Extract Red
 # Menggabungkan Kanal Merah: Menggabungkan kanal warna merah r dengan dua kanal warna kosong (blank). 
 # Hasilnya adalah citra dengan hanya warna merah yang terlihat.
-red = cv.merge([r,blank,blank])
+red = cv.merge([blank,blank,r])
 
 # Extract Green 
 # Menggabungkan Kanal Hijau: Menggabungkan kanal warna hijau g dengan dua kanal warna kosong (blank). 
@@ -40,7 +40,7 @@ green = cv.merge([blank,g,blank])
 # Extract Blue 
 # Menggabungkan Kanal Biru: Menggabungkan kanal warna biru b dengan dua kanal warna kosong (blank). 
 # Hasilnya adalah citra dengan hanya warna biru yang terlihat.
-blue = cv.merge([blank,blank,b])
+blue = cv.merge([b,blank,blank])
 
 # Menampilkan Gambar Hasil: Menampilkan gambar dengan hanya satu kanal warna pada setiap jendela yang berbeda. 
 # Terdapat tiga jendela yang menampilkan warna merah, hijau, dan biru secara terpisah.
